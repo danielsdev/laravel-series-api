@@ -2,6 +2,8 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use App\Models\Series;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -22,3 +24,6 @@ $router->post('series', 'Series\CreateSeriesAction');
 $router->get('series/{id}', 'Series\GetSeriesAction');
 $router->patch('series/{id}', 'Series\UpdateSeriesAction');
 $router->delete('series/{id}', 'Series\DeleteSeriesAction');
+
+$router->get('series/{id}/seasons', 'Season\ListSeasonAction');
+$router->get('series/{id}/episodes', 'Episode\ListEpisodeAction');

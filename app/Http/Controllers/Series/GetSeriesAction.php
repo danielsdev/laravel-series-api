@@ -19,8 +19,7 @@ class GetSeriesAction extends Controller
 
     public function __invoke(int $id)
     {
-        // $series = Series::with('seasons.episodes')->find($id);
-        $series = Series::find($id);
+        $series = Series::with('seasons.episodes')->find($id);
 
         if (null === $series) {
             return response()->json([
@@ -28,7 +27,6 @@ class GetSeriesAction extends Controller
             ], Response::HTTP_NOT_FOUND);
         }
 
-        return response()
-            ->json($series->with('seasons.episodes')->get());
+        return response()->json($series);
     }
 }
