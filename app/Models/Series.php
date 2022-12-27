@@ -12,10 +12,10 @@ class Series extends Model
     protected $table = 'series';
     protected $fillable = ['name', 'cover'];
 
-    // public function seasons()
-    // {
-    //     return $this->hasMany(Season::class, 'series_id');
-    // }
+    public function seasons()
+    {
+        return $this->hasMany(Season::class, 'series_id');
+    }
 
     // protected static function booted()
     // {

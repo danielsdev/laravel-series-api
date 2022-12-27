@@ -28,6 +28,7 @@ class GetSeriesAction extends Controller
             ], Response::HTTP_NOT_FOUND);
         }
 
-        return response()->json($series);
+        return response()
+            ->json($series->with('seasons.episodes')->get());
     }
 }

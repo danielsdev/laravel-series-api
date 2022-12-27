@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Series;
 
 use App\Http\Controllers\Controller;
 use App\Models\Series;
+use App\Repositories\SeriesRepository;
 use Illuminate\Http\Request;
 
 class CreateSeriesAction extends Controller
@@ -13,15 +14,15 @@ class CreateSeriesAction extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(private readonly SeriesRepository $repository)
     {
-        
+
     }
 
     public function __invoke(Request $request)
     {
-        $data = $request->only(['name']);
-        $series = Series::create($data);
+        $data = $request->only(['name', 'seasonsQty', 'episodesPerSeason']);
+        $series = $this->repository->add($data);
 
         return response()->json($series);
     }
