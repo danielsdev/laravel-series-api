@@ -27,3 +27,5 @@ $router->delete('series/{id}', 'Series\DeleteSeriesAction');
 
 $router->get('series/{id}/seasons', 'Season\ListSeasonAction');
 $router->get('series/{id}/episodes', 'Episode\ListEpisodeAction');
+
+$router->patch('episodes/{id}/watch', 'Episode\WatchEpisodeAction');
